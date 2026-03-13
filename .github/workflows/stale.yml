@@ -1,0 +1,17 @@
+name: Mark stale issues
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-stale: 21
+          days-before-close: 7
+          stale-issue-message: >
+            This issue has been inactive for 21 days.
+            Still happening on the latest version? Drop a comment and I'll reopen.
+          stale-issue-label: stale
+          exempt-issue-labels: bug,enhancement
